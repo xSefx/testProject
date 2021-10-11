@@ -26,5 +26,4 @@ const Text = ({ value, readonly = false, error }: IPropsTextArea) => {
     />
   )
 }
-
-export default Text
+export default React.memo(Text)

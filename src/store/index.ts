@@ -7,16 +7,22 @@ import rootReducer from './reducers'
 import rootSaga from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
-const persistConfig = {
-  key: 'root',
+const persistAuthConfig = {
+  key: 'auth',
+  storage,
+  blacklist: ['errorMessage', 'error']
+}
+
+const persistHistoryConfig = {
+  key: 'history',
   storage
 }
 
 const store = configureStore({
   reducer: combineReducers({
-    auth: persistReducer(persistConfig, rootReducer.auth),
+    auth: persistReducer(persistAuthConfig, rootReducer.auth),
     console: rootReducer.console,
-    history: rootReducer.history
+    history: persistReducer(persistHistoryConfig, rootReducer.history)
   }),
   middleware: [sagaMiddleware]
 })

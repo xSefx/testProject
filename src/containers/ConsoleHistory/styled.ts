@@ -13,6 +13,7 @@ export const ConsoleHistoryContainer = styled.div`
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   overflow-x: auto;
+  padding-right: 50px;
   min-height: 50px;
 
   ::-webkit-scrollbar {

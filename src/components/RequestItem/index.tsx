@@ -26,5 +26,4 @@ const RequestItem = ({ request, error }: IActionProps) => {
     </RequestItemContainer>
   )
 }
-
 export default RequestItem

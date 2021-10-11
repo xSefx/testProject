@@ -13,4 +13,4 @@ const FormFieldHeader = ({ title }: { title: string }) => {
   )
 }
 
-export default FormFieldHeader
+export default React.memo(FormFieldHeader)

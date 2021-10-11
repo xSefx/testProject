@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 import { logout } from '../../store/reducers/auth'
 import { useAppDispatch, useAppSelector } from '../../hooks'
@@ -11,13 +11,13 @@ const ConsoleNavigation = () => {
   const dispatch = useAppDispatch()
   const { login, sublogin } = useAppSelector((state) => state.auth)
 
-  const loguot = () => {
+  const loguot = useCallback(() => {
     dispatch(logout())
-  }
+  }, [])
 
   const loginTitle = `${login}${sublogin ? ` : ${sublogin}` : ''}`
 
-  const switchFullScreen = () => {
+  const switchFullScreen = useCallback(() => {
     if (isFullScreen) {
       document.exitFullscreen()
       setIsFullScreen(false)
@@ -25,7 +25,7 @@ const ConsoleNavigation = () => {
       document.body.requestFullscreen()
       setIsFullScreen(true)
     }
-  }
+  }, [])
 
   return (
     <ConsoleNavigationContainer>

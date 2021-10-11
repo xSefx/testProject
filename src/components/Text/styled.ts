@@ -9,8 +9,6 @@ export const TextArea = styled.textarea<ITextAreaProps>`
   padding: 10px;
   flex-grow: 1;
   font-size: 18px;
-  min-width: 400px;
-  min-height: 400px;
   cursor: pointer;
   padding: 10px;
   border: 1px solid ${({ error }) => (error ? '#CF2C00' : '#cccccc')};

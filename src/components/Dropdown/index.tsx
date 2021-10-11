@@ -36,6 +36,8 @@ const Dropdown = ({ isOpen, request, setIsOpen }: IDropdownProps) => {
 
   const ref = useRef()
 
+  // TODO implement hide dropdown by outside click
+
   // const handleOutsideClick = (event: any) => {
   //   const path = event.path || (event.composedPath && event.composedPath())
   //   if (!path.includes(ref.current)) {
@@ -65,4 +67,4 @@ const Dropdown = ({ isOpen, request, setIsOpen }: IDropdownProps) => {
   )
 }
 
-export default Dropdown
+export default React.memo(Dropdown)

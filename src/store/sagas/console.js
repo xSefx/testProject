@@ -6,11 +6,7 @@ import { setHistory } from '../reducers/history'
 
 function prepareHistory(history, currentRequest, error) {
   const filterHistory = history.filter((el) => el.request !== currentRequest)
-
-  if (filterHistory.length === history.length) {
-    return [{ request: currentRequest, error }, ...filterHistory]
-  }
-  return [{ request: currentRequest, error }, ...filterHistory]
+  return [{ request: currentRequest, error }, ...filterHistory].slice(0, 15)
 }
 
 export function* requestSage({ payload }) {

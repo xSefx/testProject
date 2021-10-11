@@ -13,6 +13,10 @@ export const SubLoginView = styled.div`
   border-radius: 5px;
   padding: 5px 15px;
   margin-right: 30px;
+
+  @media (max-width: 680px) {
+    display: none;
+  }
 `
 export const Logout = styled.button`
   display: flex;

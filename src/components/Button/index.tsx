@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTypedSelector } from '../../hooks'
 
 import { ButtonUi } from './styled'
 
@@ -12,12 +11,7 @@ interface IButton {
   loading: boolean
 }
 
-const Button = ({
-  title,
-  disabled = false,
-  submit = () => {},
-  loading
-}: IButton) => {
+const Button = ({ title, disabled = false, submit, loading }: IButton) => {
   return (
     <ButtonUi disabled={disabled} onClick={submit}>
       {loading ? <Loader /> : title}

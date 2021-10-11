@@ -1,10 +1,9 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useCallback } from 'react'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 
 import { authenticate } from '../../store/reducers/auth'
-import { useAppSelector } from '../../hooks'
+import { useAppSelector, useAppDispatch } from '../../hooks'
 
 import { ILoginProps } from '../../types'
 import { FormContainer, FormTitle } from './styled'
@@ -15,19 +14,19 @@ import Button from '../../components/Button'
 import LinkView from '../../components/LinkView'
 import ErrorView from '../../components/ErrorView'
 
+const validationSchema = yup.object().shape({
+  login: yup.string().required('Обязательное поле'),
+  sublogin: yup.string(),
+  password: yup.string().required('Обязательное поле')
+})
+
 const LoginForm = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { error, loading } = useAppSelector((state) => state.auth)
 
-  const validationSchema = yup.object().shape({
-    login: yup.string().required('Обязательное поле'),
-    sublogin: yup.string(),
-    password: yup.string().required('Обязательное поле')
-  })
-
-  const doLogin = (values: ILoginProps) => {
+  const doLogin = useCallback((values: ILoginProps) => {
     dispatch(authenticate(values))
-  }
+  }, [])
 
   return (
     <>
@@ -47,43 +46,41 @@ const LoginForm = () => {
           }}
           validationSchema={validationSchema}
         >
-          {(props) => {
-            return (
-              <Form>
-                {error && <ErrorView />}
-                <FormField
-                  title={'Логин'}
-                  type={'text'}
-                  name={'login'}
-                  value={props.values.login}
-                  handleChange={props.handleChange}
-                  handleBlur={props.handleBlur}
-                />
-                <FormField
-                  title={'Сублогин'}
-                  type={'text'}
-                  name={'sublogin'}
-                  value={props.values.sublogin}
-                  handleChange={props.handleChange}
-                  handleBlur={props.handleBlur}
-                />
-                <FormField
-                  title={'Пароль'}
-                  type={'password'}
-                  name={'password'}
-                  value={props.values.password}
-                  handleChange={props.handleChange}
-                  handleBlur={props.handleBlur}
-                />
-                <Button
-                  title={'Войти'}
-                  loading={loading}
-                  disabled={!props.isValid && !props.dirty}
-                  submit={props.handleSubmit}
-                />
-              </Form>
-            )
-          }}
+          {(props) => (
+            <Form>
+              {error && <ErrorView />}
+              <FormField
+                title={'Логин'}
+                type={'text'}
+                name={'login'}
+                value={props.values.login}
+                handleChange={props.handleChange}
+                handleBlur={props.handleBlur}
+              />
+              <FormField
+                title={'Сублогин'}
+                type={'text'}
+                name={'sublogin'}
+                value={props.values.sublogin}
+                handleChange={props.handleChange}
+                handleBlur={props.handleBlur}
+              />
+              <FormField
+                title={'Пароль'}
+                type={'password'}
+                name={'password'}
+                value={props.values.password}
+                handleChange={props.handleChange}
+                handleBlur={props.handleBlur}
+              />
+              <Button
+                title={'Войти'}
+                loading={loading}
+                disabled={!(props.dirty && props.isValid)}
+                submit={props.handleSubmit}
+              />
+            </Form>
+          )}
         </Formik>
       </FormContainer>
 

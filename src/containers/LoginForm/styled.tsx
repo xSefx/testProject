@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
-  height: 100%;
   display: flex;
   margin: 20px 0;
   justify-content: center;
   flex-direction: column;
   width: 520px;
-  height: 425px;
   left: calc(50% - 520px / 2);
   top: 222px;
   background: #ffffff;

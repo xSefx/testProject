@@ -40,7 +40,7 @@ export function* authenticateSaga({ payload }) {
       error = true
       document.cookie = ''
 
-      console.log('err', err, typeof err)
+      console.log('err', err)
       errorPayload = { explain: err.explain, id: err.id }
     })
 
