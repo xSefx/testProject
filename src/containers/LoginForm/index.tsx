@@ -13,6 +13,7 @@ import FormField from '../FormField'
 import Button from '../../components/Button'
 import LinkView from '../../components/LinkView'
 import ErrorView from '../../components/ErrorView'
+import { ENTER, LOGIN, PASSWORD, SUBLOGIN, TITLE } from '../../constants'
 
 const validationSchema = yup.object().shape({
   login: yup.string().required('Обязательное поле'),
@@ -32,7 +33,7 @@ const LoginForm = () => {
     <>
       <Logo />
       <FormContainer>
-        <FormTitle>API-консолька</FormTitle>
+        <FormTitle>{TITLE}</FormTitle>
 
         <Formik
           initialValues={{
@@ -50,7 +51,7 @@ const LoginForm = () => {
             <Form>
               {error && <ErrorView />}
               <FormField
-                title={'Логин'}
+                title={LOGIN}
                 type={'text'}
                 name={'login'}
                 value={props.values.login}
@@ -58,7 +59,7 @@ const LoginForm = () => {
                 handleBlur={props.handleBlur}
               />
               <FormField
-                title={'Сублогин'}
+                title={SUBLOGIN}
                 type={'text'}
                 name={'sublogin'}
                 value={props.values.sublogin}
@@ -66,7 +67,7 @@ const LoginForm = () => {
                 handleBlur={props.handleBlur}
               />
               <FormField
-                title={'Пароль'}
+                title={PASSWORD}
                 type={'password'}
                 name={'password'}
                 value={props.values.password}
@@ -74,7 +75,7 @@ const LoginForm = () => {
                 handleBlur={props.handleBlur}
               />
               <Button
-                title={'Войти'}
+                title={ENTER}
                 loading={loading}
                 disabled={!(props.dirty && props.isValid)}
                 submit={props.handleSubmit}

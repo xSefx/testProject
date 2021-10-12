@@ -1,4 +1,5 @@
 import React from 'react'
+import { OPTIONAL, SUBLOGIN } from '../../constants'
 
 import { FormFieldContainer, FormFieldTitle, FormFieldOptional } from './styled'
 
@@ -6,9 +7,7 @@ const FormFieldHeader = ({ title }: { title: string }) => {
   return (
     <FormFieldContainer>
       <FormFieldTitle>{title}</FormFieldTitle>
-      {title === 'Сублогин' && (
-        <FormFieldOptional>Опционально</FormFieldOptional>
-      )}
+      {title === SUBLOGIN && <FormFieldOptional>{OPTIONAL}</FormFieldOptional>}
     </FormFieldContainer>
   )
 }

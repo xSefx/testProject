@@ -3,6 +3,7 @@ import React from 'react'
 import { Title, ConsoleTitleContainer } from './styled'
 
 import Logo from '../../components/Logo'
+import { TITLE } from '../../constants'
 
 const ConsoleTitle = () => {
   return (
@@ -10,7 +11,7 @@ const ConsoleTitle = () => {
       <div>
         <Logo />
       </div>
-      <Title>API-консолька</Title>
+      <Title>{TITLE}</Title>
     </ConsoleTitleContainer>
   )
 }

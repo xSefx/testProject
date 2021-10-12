@@ -4,6 +4,7 @@ import { logout } from '../../store/reducers/auth'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 
 import { SubLoginView, Logout, ConsoleNavigationContainer } from './styled'
+import { EXIT } from '../../constants'
 
 const ConsoleNavigation = () => {
   const [isFullScreen, setIsFullScreen] = useState(false)
@@ -31,7 +32,7 @@ const ConsoleNavigation = () => {
     <ConsoleNavigationContainer>
       <SubLoginView>{loginTitle}</SubLoginView>
       <Logout onClick={loguot}>
-        <div>Выйти</div>
+        <div>{EXIT}</div>
         <img src="icons/log-out.svg" alt="logout" />
       </Logout>
       <div onClick={switchFullScreen}>

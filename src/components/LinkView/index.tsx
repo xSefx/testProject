@@ -1,9 +1,10 @@
 import React from 'react'
+import { GIT } from '../../constants'
 
 import { Link } from './styled'
 
 const LinkView = () => {
-  return <Link>@link-to-your-github</Link>
+  return <Link>{GIT}</Link>
 }
 
 export default LinkView

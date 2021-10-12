@@ -3,6 +3,7 @@ import React from 'react'
 import { View, MessageContainer, Title, Message } from './styled'
 
 import { useTypedSelector } from '../../hooks'
+import { ERROR_LOGIN } from '../../constants'
 
 const ErrorView = () => {
   const {
@@ -16,7 +17,7 @@ const ErrorView = () => {
         <img src="icons/error.svg" alt="error" />
       </div>
       <MessageContainer>
-        <Title>Вход не вышел</Title>
+        <Title>{ERROR_LOGIN}</Title>
         <Message>{error}</Message>
       </MessageContainer>
     </View>

@@ -8,6 +8,7 @@ import {
 } from '../../store/reducers/console'
 import { removeHistory } from '../../store/reducers/history'
 import { useAppDispatch } from '../../hooks'
+import { COPY, DELETE, EXECUTE } from '../../constants'
 
 interface IDropdownProps {
   isOpen: boolean
@@ -55,13 +56,13 @@ const Dropdown = ({ isOpen, request, setIsOpen }: IDropdownProps) => {
   return (
     <DropdownContainer ref={ref} isOpen={isOpen}>
       <DropdownItem destroy={false} onClick={executeRequest}>
-        Выполнить
+        {EXECUTE}
       </DropdownItem>
       <DropdownItem destroy={false} onClick={copyRequest}>
-        Скопировать
+        {COPY}
       </DropdownItem>
       <DropdownItem destroy={true} onClick={removeRequest}>
-        Удалить
+        {DELETE}
       </DropdownItem>
     </DropdownContainer>
   )

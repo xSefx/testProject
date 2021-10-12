@@ -7,6 +7,7 @@ import { ConsoleFooterContainer, FormatButton } from './styled'
 
 import Link from '../../components/LinkView'
 import Button from '../../components/Button'
+import { FORMAT, SEND } from '../../constants'
 
 const ConsoleFooter = () => {
   const dispatch = useAppDispatch()
@@ -27,8 +28,6 @@ const ConsoleFooter = () => {
   }, [])
 
   const sendRequest = useCallback(() => {
-    console.log('try')
-
     try {
       const prepareString = JSON.stringify(JSON.parse(requestMessage))
       dispatch(request(prepareString))
@@ -39,11 +38,11 @@ const ConsoleFooter = () => {
 
   return (
     <ConsoleFooterContainer>
-      <Button submit={sendRequest} title={'Отправить'} loading={loading} />
+      <Button submit={sendRequest} title={SEND} loading={loading} />
       <Link />
       <FormatButton onClick={() => formatRequest(requestMessage)}>
         <img src="icons/format.svg" alt="format" />
-        <div>Форматировать</div>
+        <div>{FORMAT}</div>
       </FormatButton>
     </ConsoleFooterContainer>
   )
